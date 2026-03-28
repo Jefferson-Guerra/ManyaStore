@@ -1,0 +1,228 @@
+/*Cuerpo*/
+body {
+    background-color: rgb(101, 171, 97);
+}
+
+/*Navar*/
+.custom-navbar{
+    background-color:#000;
+    padding:10px 20px;
+}
+
+/* LOGO */
+.logo-text{
+    font-weight:900;
+    font-size:34px;
+    line-height:0.8;
+    color:white;
+    text-decoration:none;
+}
+
+.logo-text span{
+    display:block;
+    font-size:20px;
+}
+
+/* BUSCADOR */
+.search-box{
+    width:40%;
+    color: black;
+}
+
+.search-input{
+    background:#f0f0f0;
+    border:none;
+    color:white;
+    border-radius:6px;
+    padding:10px 15px;
+}
+
+/* DERECHA */
+.navbar-right{
+    color:white;
+}
+
+.navbar-right .nav-link{
+    color:white;
+}
+
+.carrito-general{
+    font-weight:500;    
+}
+
+.carrito{
+    color: white;
+    text-decoration: none
+}
+
+
+/*Carrusel*/
+#carouselExampleIndicators img{
+    height: 650px;        
+    object-fit: cover;    
+}
+
+/*Anuncio*/
+/* 1. Contenedor de la cuadrícula (el padre de todos los anuncios) */
+.ads-grid {
+    display: grid;
+    /* MAGIA AQUÍ: Le decimos que haga exactamente 5 columnas del mismo tamaño (1fr) */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px; 
+    padding: 20px;
+}
+
+/* 1.1 PRO-TIP: Diseño adaptable para celulares y tablets */
+@media (max-width: 1200px) {
+    .ads-grid {
+        /* Si la pantalla es más pequeña que una PC, vuelve al modo automático para que no se aplasten */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+/* 2. Estilo de cada Tarjeta de Producto Individual */
+.ad-container {
+    background-color: #1a1a1a; /* Fondo oscuro */
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,255,136,0.2); /* Sombra sutil verde */
+    
+    /* MAGIA AQUÍ: Convierte la tarjeta en un contenedor flexible vertical */
+    display: flex;
+    flex-direction: column;
+    /* Separa los elementos empujando el botón al fondo */
+    justify-content: space-between; 
+    /* Altura mínima para asegurar que todas midan lo mismo */
+    min-height: 480px; 
+    transition: transform 0.2s; /* Efecto al pasar el mouse */
+}
+
+.ad-container:hover {
+    transform: translateY(-5px); /* Se levanta un poco */
+}
+
+/* 3. Estilo de la IMAGEN (¡Punto Crítico!) */
+.ad-image {
+    width: 100%;
+    height: 200px; /* ALTURA FIJA PARA TODAS LAS IMÁGENES */
+    /* MAGIA AQUÍ: Ajusta la imagen para llenar el espacio sin estirarse ni aplastarse, recortando lo que sobre */
+    object-fit: contain; 
+    margin-bottom: 15px;
+}
+
+/* 4. Estilos de Texto (Uniformes) */
+.ad-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #00ff88; /* Verde brillante */
+    margin-bottom: 5px;
+    /* Limita el título a 2 líneas para que no desescuadre */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ad-description {
+    font-size: 0.9rem;
+    color: #b0b0b0; /* Gris claro */
+    margin-bottom: 5px;
+}
+
+.ad-price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* 5. Estilo del BOTÓN (Súper Importante) */
+.ad-button {
+    background-color: #00c853; /* Verde botón */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.2s;
+    /* Asegura que ocupe todo el ancho disponible */
+    width: 100%; 
+    border: none;
+    cursor: pointer;
+}
+
+.ad-button:hover {
+    background-color: #00a844; /* Verde más oscuro al pasar mouse */
+}
+/*Paginacion*/
+.page-link{
+    color: black;
+}
+
+/* Estilo VIP para el botón de Procesar Compra */
+.btn-procesar {
+    background-color: white;
+    color: #0d0d0d; /* Letras oscuras para que resalte */
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+}
+
+/* El efecto al pasar el mouse por encima */
+.btn-procesar:hover {
+    background-color: #00ff88; /* Verde ManyaStore */
+    color: #0d0d0d;
+    border-color: #00ff88;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.6); /* Brillo neón */
+    transform: translateY(-2px); /* Se levanta un poquito */
+}
+
+/* Estilo Premium Oscuro para los botones de categoría */
+.btn-manya-outline {
+    background-color: #1a1a1a; /* Fondo negro/gris muy oscuro */
+    color: white; /* Texto blanco por defecto */
+    border: 1px solid #333; /* Borde sutil para que no se pierdan en el fondo */
+    border-radius: 25px; /* Bordes redondeados modernos */
+    padding: 8px 25px;
+    font-weight: bold;
+    transition: all 0.3s ease; /* Transición suave para la animación */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Sombra ligera hacia abajo */
+}
+
+/* El efecto "Gamer" al pasar el mouse o hacer clic */
+.btn-manya-outline:hover, 
+.btn-manya-outline:focus {
+    background-color: #0d0d0d; /* Fondo un poco más oscuro */
+    color: #00ff88; /* El texto se vuelve verde neón */
+    border-color: #00ff88; /* El borde se enciende en verde */
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4); /* Brillo verde alrededor */
+    transform: translateY(-2px); /* El botón se levanta un poquito */
+}
+
+/* ========================================== */
+/* ESTILOS DEL FOOTER                         */
+/* ========================================== */
+.footer-manya {
+    background-color: #121212; /* Fondo súper oscuro para contrastar */
+    border-top: 3px solid #00ff88; /* La línea verde superior */
+}
+
+.footer-link {
+    color: #b0b0b0; /* Gris claro */
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el mouse por los enlaces */
+.footer-link:hover {
+    color: #00ff88; /* Se pintan de verde */
+    transform: translateX(5px); /* Se mueven un poquito a la derecha (efecto flecha) */
+}

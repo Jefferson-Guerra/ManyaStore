@@ -1,0 +1,47 @@
+/* Estilos específicos para la pantalla de Login/Registro */
+.login-container { 
+    max-width: 400px; 
+    margin: 100px auto; 
+    background: #0d0d0d; 
+    padding: 30px; 
+    border-radius: 12px; 
+    box-shadow: 0 0 15px rgba(0,255,136,0.3); 
+    color: white; 
+}
+
+.form-control { 
+    background: #1a1a1a; 
+    border: 1px solid #333; 
+    color: white; 
+}
+
+.form-control:focus { 
+    background: #1a1a1a; 
+    color: white; 
+    border-color: #00ff88; 
+    box-shadow: none; 
+}
+
+.btn-manya { 
+    background: #00c853; 
+    color: white; 
+    font-weight: bold; 
+    width: 100%; 
+    margin-top: 15px; 
+}
+
+.btn-manya:hover { 
+    background: #00a844; 
+}
+
+/* Estilo para el botón del ojo */
+.btn-ojo { 
+    background: #1a1a1a; 
+    border: 1px solid #333; 
+    color: #9aa0a6; 
+}
+
+.btn-ojo:hover { 
+    background: #333; 
+    color: white; 
+}

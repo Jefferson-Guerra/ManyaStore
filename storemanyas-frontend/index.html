@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManyaStore</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body style="background-color: rgb(101, 171, 97);">
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+  <div class="container-fluid align-items-center">
+
+    <!--Navbar-->
+    <a class="navbar-brand logo-text" href="index.html" style="color: white;">
+      MANYAS
+      <span style="color: #00ff88;">STORE</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarContenido">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarContenido">
+
+      <div class="search-box mx-auto">
+        <input id="buscador" class="form-control search-input" type="search" placeholder="Buscar productos...">
+      </div>
+
+      <div class="navbar-right d-flex align-items-center">
+
+        <div class="contacto me-4">
+          <div class="contacto">Contáctanos</div>
+          <strong>910 372 585</strong>
+        </div>
+
+        <div class="me-4" id="menu-usuario">
+         <a href="login.html" class="nav-link">Iniciar sesión</a>
+         <div class="small text-secondary">Mi cuenta ▼</div>
+        </div>
+
+        <div class="carrito-general" style="cursor: pointer;" data-bs-toggle="offcanvas" data-bs-target="#panelCarrito">
+          🛒 <span class="badge bg-primary">0</span>
+          <span class="carrito text-white text-decoration-none">Carrito</span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!--Carrusel-->
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="Imagenes/MOUSE1.webp" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="Imagenes/LAPTOP1.webp" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="Imagenes/PC1.webp" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<br>
+
+<!--Botones Categoria-->
+<div class="container my-4 text-center" id="filtros-categoria">
+    <button class="btn btn-manya-outline mx-2 my-1" onclick="filtrarPorCategoria('todos')">Todos</button>
+    <button class="btn btn-manya-outline mx-2 my-1" onclick="filtrarPorCategoria(1)">Componentes</button>
+    <button class="btn btn-manya-outline mx-2 my-1" onclick="filtrarPorCategoria(2)">Laptops</button>
+    <button class="btn btn-manya-outline mx-2 my-1" onclick="filtrarPorCategoria(3)">Periféricos</button>
+</div>
+
+<!--Pasar Pagina-->
+<div class="ads-grid" id="contenedor-productos">
+    <h3 style="color: white; text-align: center; width: 100%; grid-column: 1 / -1;">Cargando productos desde la base de datos...</h3>
+</div>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link">Anterior</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Siguiente</a>
+    </li>
+  </ul>
+</nav>
+
+<!--Carrito-->
+<div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="panelCarrito" aria-labelledby="panelCarritoLabel">
+  <div class="offcanvas-header border-bottom border-secondary">
+    <h5 class="offcanvas-title fw-bold" id="panelCarritoLabel" style="color: #00ff88;">🛒 Mi Carrito</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column">
+    
+    <div id="lista-carrito" class="flex-grow-1 overflow-auto">
+        <p class="text-center mt-5 text-secondary">El carrito está vacío.</p>
+    </div>
+    
+    <div class="border-top border-secondary pt-3 mt-3">
+        <h4 class="d-flex justify-content-between">
+            <span>Total:</span>
+            <span id="total-carrito" style="color: #00ff88;">S/ 0.00</span>
+        </h4>
+        <button class="btn btn-procesar w-100 mt-2" onclick="procesarCompra()">Procesar Compra</button>
+    </div>
+
+  </div>
+</div>
+
+<!--Pie Pagina-->
+<footer class="footer-manya mt-5">
+    <div class="container pb-4 pt-5">
+        <div class="row">
+            
+            <div class="col-md-4 mb-4">
+                <h4 class="logo-text text-white mb-3">MANYAS<span style="color: #00ff88;">STORE</span></h4>
+                <p class="text-secondary small">Tu destino #1 para armar el setup de tus sueños. Los mejores componentes, periféricos y equipos al mejor precio del mercado para que juegues sin límites.</p>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <h5 class="text-white mb-3">Enlaces Rápidos</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="footer-link">Términos y Condiciones</a></li>
+                    <li><a href="#" class="footer-link">Política de Garantía y Devoluciones</a></li>
+                    <li><a href="#" class="footer-link">Soporte Técnico</a></li>
+                    <li><a href="#" class="footer-link">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <h5 class="text-white mb-3">Atención al Cliente</h5>
+                <p class="text-secondary small mb-1">📞 910 372 585</p>
+                <p class="text-secondary small mb-4">✉️ ventas@manyastore.com</p>
+                
+                <h5 class="text-white mb-2" style="font-size: 1rem;">Métodos de Pago Seguros</h5>
+                <div class="d-flex gap-2">
+                    <span class="badge bg-dark border border-secondary p-2">Visa / Mastercard</span>
+                    <span class="badge bg-dark border border-secondary p-2" style="color: #00ff88;">Yape / Plin</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="text-center py-3 border-top border-secondary" style="background-color: #0a0a0a;">
+        <p class="mb-0 text-secondary small">© 2026 ManyaStore. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<!--Conexion de index.js y boostraps-->
+    <script src="index.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+DELETE FROM dbo.Productos
+WHERE Nombre = 'AUDÍFONOS GAMER LOGITECH';
